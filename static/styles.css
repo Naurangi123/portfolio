@@ -1,0 +1,17 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery .row {
+    margin: 10px;
+}
+
+.gallery img {
+    width: 300px;
+    height: auto;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

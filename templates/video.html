@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-7">
+        {% if videos.video %}
+			<video controls class="img-fluid img-center" width="100%">
+				<source src="{{ videos.video.url }}" type="video/mp4">
+			</video>
+		{% endif %}
+    </div>
+</div>
+
+{% endblock %}

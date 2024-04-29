@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row row-cols-md-4 border-success">
+    <form method="POST" action="{% url 'video' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        <button type="submit" class="btn btn-secondary">Upload Video</button>
+    </form>
+</div>
+<br class="border">
+<div class="container text-center">
+    <div class="row row-cols-5">
+        {% for data in videos %}
+            <div class="col object-fit-cover border rounded col-sm-12 col-md-2 d-inline-block">
+                {% if data.video %}
+                <video controls class="img-fluid img-center" width="100%">
+                    <source src="{{ data.video.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="{% url 'video_one' data.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+</svg></a>
+                {% endif %}
+            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-send"
+                  viewBox="0 0 16 16">
+  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+</svg></a>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

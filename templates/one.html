@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-7">
+        <a href="{% url 'delete_gallery' images.id %}"
+           class="btn btn-danger">&#10539;</a>
+        {% if images.image %}
+        <img src="{{ images.image.url }}" width="100%;">
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

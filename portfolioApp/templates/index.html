@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load socialaccount %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<body class="p-3 mb-2 bg-success-subtle text-success-emphasis bg-success p-2 text-dark bg-opacity-50">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="{% static 'images/1.jpg' %}" class="d-block w-100"
+               style="width: 18rem; height:27rem; object-fit:cover;" alt="Space Image 1">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="{% static 'images/2.jpg' %}" class="d-block w-80"
+               style="width: 100%; height:27rem; object-fit:cover;" alt="Space Image 2">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/3.jpg' %}" class="d-block w-100"
+               style="width: 18rem; height:27rem; object-fit:cover;" alt="Space Image 3">
+        </div>
+          <div class="carousel-item">
+          <img src="{% static 'images/4.jpg' %}" class="d-block w-100"
+               style="width: 18rem; height:27rem; object-fit:cover;" alt="Space Image 4">
+        </div>
+          <div class="carousel-item">
+          <img src="{% static 'images/5.jpg' %}" class="d-block w-100"
+               style="width: 18rem; height:27rem; object-fit:cover;" alt="Space Image 5">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+        <span>Welcome {{ user.username }}</span>
+    </div>
+</body>
+{% else %}
+<div class="col-md-6 offset-md-3">
+		<h1>Login</h1>
+		<form method="POST" action="{% url 'index' %}">
+			{% csrf_token %}
+			  <div class="mb-3">
+				<input type="text" name="username" class="form-control" placeholder="User name" required>
+			  </div>
+			  <div class="mb-3">
+				<input type="text" name="password" class="form-control" placeholder="Password" required>
+			  </div>
+			  <button type="submit" class="btn btn-outline-success">Login</button>
+            <button class="btn btn-outline-info"><a href="{% url 'register' %}">Register</a></button>
+		</form>
+        </div>
+    </div>
+	</div>
+
+{% endif %}
+{% endblock %}
+
